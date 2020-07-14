@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">KCR</string>
+
     <string name="logo_description">KCR logo</string>
 
-    <string name="playback_loading">Loading...</string>
+    <string name="playback_connecting">Connecting…</string>
+    <string name="playback_loading">Loading…</string>
     <string name="playback_play">Play</string>
     <string name="playback_stop">Stop</string>
 
     <string name="now_playing">Now playing:</string>
+
+    <string name="playback_service_description">This service permits KCR to keep playing in the background. If you stop it, the music will stop, too.</string>
 </resources>
