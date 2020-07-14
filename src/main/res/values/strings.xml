@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KCR</string>
+    <string name="logo_description">KCR logo</string>
+
+    <string name="playback_loading">Loading...</string>
+    <string name="playback_play">Play</string>
+    <string name="playback_stop">Stop</string>
+
+    <string name="now_playing">Now playing:</string>
+</resources>

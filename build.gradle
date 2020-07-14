@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.0"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "fm.kcr.mobile.android"
+        minSdkVersion 16
+        /* Targeting SDK v29 because even though v30 is available through the SDK manager, its
+         * source isn't yet. No Javadoc makes Sam a sad boy. */
+        targetSdkVersion 29
+        versionCode 1_000_000
+        versionName "1.0.0"
+    }
+}
