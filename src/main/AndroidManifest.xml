@@ -6,13 +6,22 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!-- I'm seeing a warning on android:usesCleartextTraffic:
+
+        Attribute usesCleartextTraffic is only used in API level 23 and higher (current min is 16)
+
+    This would seem to imply that it is unnecessary in light of the minimum API level. This is not
+    the case! Yes, it will be ignored by old devices, but devices on API level 23 and higher don't
+    care what the minimum API level is. They _do_ require the setting, or else the app is limited to
+    HTTPS requests. -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+        android:usesCleartextTraffic="true">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
