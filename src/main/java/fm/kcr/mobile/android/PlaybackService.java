@@ -121,12 +121,10 @@ public class PlaybackService
             return;
         }
 
-        try {
+        if (this.mediaPlayer.isPlaying()) {
             this.mediaPlayer.stop();
-        } catch (IllegalStateException e) {
-            /* We're about to throw out the media player, so we don't really care if stopping it
-             * gracefully fell through (which is most likely if it's still preparing). */
         }
+        this.mediaPlayer.reset();
         this.mediaPlayer.release();
         this.mediaPlayer = null;
         this.setState(PlaybackState.STOPPED);
