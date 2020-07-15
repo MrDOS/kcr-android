@@ -8,6 +8,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.Build;
@@ -90,19 +91,24 @@ public class PlaybackService
         this.startForeground(PlaybackService.PLAYBACK_NOTIFICATION_ID, notificationBuilder.build());
 
         this.mediaPlayer = new MediaPlayer();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             this.mediaPlayer.setAudioAttributes(
                     new AudioAttributes.Builder()
                             .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                             .setUsage(AudioAttributes.USAGE_MEDIA)
                             .build());
+        } else {
+            this.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         }
+
         try {
             this.mediaPlayer.setDataSource(PlaybackService.STREAM_URL);
         } catch (IOException e) {
             Toast.makeText(this, "Failure loading URL: " + e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
+
         this.mediaPlayer.setOnCompletionListener(this);
         this.mediaPlayer.setOnErrorListener(this);
         this.mediaPlayer.setOnPreparedListener(this);
